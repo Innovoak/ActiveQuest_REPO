@@ -1,4 +1,4 @@
-package com.innovoak.activequest.repo;
+package com.innovoak.activequest.repo.avatar;
 
 import com.innovoak.apps.activequest.model.avatar.AvatarFace;
 import com.innovoak.util.webhelpers.server.DatabaseRepositoryServlet;
