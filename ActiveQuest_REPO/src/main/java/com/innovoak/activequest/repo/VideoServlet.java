@@ -10,28 +10,54 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.innovoak.util.webhelpers.Message;
+import com.innovoak.util.webhelpers.Message.MessageBuilder;
+import com.innovoak.util.webhelpers.server.MessageServlet;
+
 /**
  * Servlet implementation class VideoServlet
  */
 @WebServlet("/VideoServlet")
-public class VideoServlet extends HttpServlet {
+public class VideoServlet extends MessageServlet {
 	private static final long serialVersionUID = 1L;
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        final String videoFileName = request.getParameter("videoFileName");
+	
+	@Override
+	public Message process(Message arg0) {
+		//Get video file name from message
+		String videoFileName = (String) arg0.getContent();
+		
+		// Create new message 
+        Message message = new Message();
         
+        //Find the video file's server location
         final File videoFile = new File(getServletContext().getRealPath("/videos/" + videoFileName));
 
-        final byte[] videoBytes = Files.readAllBytes(videoFile.toPath());
+        byte[] videoBytes;
+		try {
+			//Read the video file into a byte array
+			videoBytes = Files.readAllBytes(videoFile.toPath());
+			
+			//Set message fields for success
+		    message.setName("success");
+		    message.setAction("success");
+		    message.setContent(videoBytes);
+		} catch (IOException e) {
+			e.printStackTrace();
+			
+			//Set message fields for error
+			message.setName("ERROR");
+			message.setAction("ERROR");
+			message.setDescription("Video not found");
+			
+		}
+		//Return message
+		return message;
 
-        response.setContentType("video/mp4");
-        response.setContentLength(videoBytes.length);
-        response.getOutputStream().write(videoBytes);
 
-        response.getOutputStream().close();
-    }
+
+	}
+
+	
 }
     
  
