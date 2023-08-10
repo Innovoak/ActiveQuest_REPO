@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 /**
  * Servlet implementation class AuthenticationRepositoryServlet
  */
-@WebServlet("/authentication")
+@WebServlet("/auth")
 public class AuthenticationRepositoryServlet extends DatabaseRepositoryServlet<Authentication> {
 	private static final long serialVersionUID = 1L;
 

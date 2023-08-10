@@ -17,7 +17,7 @@ import com.innovoak.util.webhelpers.server.MessageServlet;
 /**
  * Servlet implementation class VideoServlet
  */
-@WebServlet("/VideoServlet")
+@WebServlet("/video")
 public class VideoServlet extends MessageServlet {
 	private static final long serialVersionUID = 1L;
 	

@@ -5,7 +5,7 @@ import com.innovoak.util.webhelpers.server.DatabaseRepositoryServlet;
 import javax.servlet.annotation.WebServlet;
 
 
-@WebServlet("/GroupChatMember")
+@WebServlet("/group-chat-member")
 public class GroupChatMemberRepositoryServlet extends DatabaseRepositoryServlet<GroupChatMember> {
 	private static final long serialVersionUID = 1L;
 	

@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 /**
  * Servlet implementation class GoalRepositoryServlet
  */
-@WebServlet("/avatar_face")
+@WebServlet("/avatar-face")
 public class AvatarFaceRepositoryServlet  extends DatabaseRepositoryServlet<AvatarFace> {
 	private static final long serialVersionUID = 1L;
 
